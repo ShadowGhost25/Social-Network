@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
+import Header from './header.js'
+import Technologes from './technologes.js'
 
 const App = () => {
 	return (
@@ -7,28 +9,6 @@ const App = () => {
 			<Header />
 			<Technologes />
 		</div>
-	);
-}
-const Technologes = () => {
-	return (
-		<div>
-			<ul>
-				<li>css</li>
-				<li>html</li>
-				<li>react</li>
-			</ul>
-		</div>)
-}
-
-const Header = () => {
-	return (
-		<div className="App">
-			<ul>
-				<a href='#'>Home</a>
-				<a href='#'>DOM</a>
-				<a href='#'>News</a>
-			</ul>
-		</div >
 	);
 }
 

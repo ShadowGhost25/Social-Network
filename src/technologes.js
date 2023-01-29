@@ -6,6 +6,7 @@ const Technologes = () => {
 				<li>css</li>
 				<li>html</li>
 				<li>react</li>
+				asdas
 			</ul>
 		</div>)
 }

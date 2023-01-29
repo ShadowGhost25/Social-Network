@@ -1,11 +1,13 @@
 import React from 'react';
+
 const Header = () => {
 	return (
 		<div className="App">
 			<ul>
-				<a href='#'>Home</a>
-				<a href='#'>DOM</a>
-				<a href='#'>News</a>
+				<li><a href='*'>Home-</a></li>
+				<li><a href='*'>DOM-</a></li>
+				<li><a href='*'>News-</a></li>
+				asdas
 			</ul>
 		</div >
 	);

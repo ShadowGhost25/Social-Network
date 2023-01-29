@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Header from './header.js'
-import Technologes from './technologes.js'
+import Header from './header';
+import Technologes from './technologes';
 
 const App = () => {
 	return (

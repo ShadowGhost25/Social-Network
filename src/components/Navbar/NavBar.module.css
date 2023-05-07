@@ -1,7 +1,17 @@
-.nav {
+.sidebar {
 	grid-area: n;
 	background-color: rgb(51, 51, 0);
+	padding: 15px;
 }
-.item{
-	color: white;
+a{
+  color: white;
+  text-decoration: none;
+}
+
+.item a{
+	text-decoration: none;
+	color: #00BFFF;
+}
+.item a.activeLink {
+	color: Cyan;
 }

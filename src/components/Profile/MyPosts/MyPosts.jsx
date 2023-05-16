@@ -9,7 +9,7 @@ const MyPosts = () => {
 		{ id: 1, message: "Hi how are you", likescount: 62 },
 		{ id: 2, message: "It`s my first post", likescount: 51 },
 	]
-	let postsElement = postsData.map(p => <Posts message={p.message} likeCount={p.likescount} />)
+	let postsElement = postsData.map(p => <Posts key={p.id} message={p.message} likeCount={p.likescount} />)
 	return (
 		<div>
 			<div>
@@ -18,7 +18,7 @@ const MyPosts = () => {
 			<div>
 				new post
 			</div>
-			<div className='posts'>
+			<div className={style.posts}>
 				{postsElement}
 			</div>
 		</div>

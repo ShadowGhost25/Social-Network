@@ -4,11 +4,8 @@ import Posts from './Posts/Posts';
 // eslint-disable-next-line no-unused-vars
 import style from './MyPosts.module.css';
 
-const MyPosts = () => {
-	let postsData = [
-		{ id: 1, message: "Hi how are you", likescount: 62 },
-		{ id: 2, message: "It`s my first post", likescount: 51 },
-	]
+const MyPosts = ({ postsData }) => {
+
 	let postsElement = postsData.map(p => <Posts key={p.id} message={p.message} likeCount={p.likescount} />)
 	return (
 		<div>

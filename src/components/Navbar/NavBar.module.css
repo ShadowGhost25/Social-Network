@@ -15,3 +15,8 @@ a{
 .item a.activeLink {
 	color: Cyan;
 }
+
+h2{
+	color: white;
+	margin-top: 60px;
+}

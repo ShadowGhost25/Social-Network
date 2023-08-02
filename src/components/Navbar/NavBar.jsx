@@ -1,8 +1,9 @@
 import React from 'react';
 import style from './NavBar.module.css';
 import Paragraph from './Paragraph/Paragraph';
+import SideBar from './SideBar/SideBar';
 
-const NavBar = (props) => {
+const NavBar = ({ state, friendsData }) => {
 	let navBarData = [
 		{ id: 1, item: "Profile", link: "/profile" },
 		{ id: 2, item: "Messages", link: "/dialogs" },
@@ -10,10 +11,14 @@ const NavBar = (props) => {
 		{ id: 4, item: "News", link: "/news" },
 		{ id: 5, item: "Settings", link: "/settings" },
 	]
+	console.log(state)
 	let navBarElement = navBarData.map(n => <Paragraph key={n.id} item={n.item} link={n.link} />)
+
 	return (
 		<nav className={style.sidebar}>
 			{navBarElement}
+			<h2>Friends</h2>
+			<SideBar friendsData={state.friendsData} />
 		</nav >
 	)
 }

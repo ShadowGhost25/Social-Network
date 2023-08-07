@@ -10,14 +10,14 @@ import NavBar from './components/Navbar/NavBar';
 import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
-const App = ({state}) => {
+const App = ({state, addPost}) => {
 	return (
 		<div className='app-wrapper'>
 			<Header />
 			<NavBar state={state.sideBar}/>
 			<div className='app-wrapper-content'>
 			<Routes>
-				<Route path='/profile' element = {<Profile state={state.profilePage}/>}/>
+				<Route path='/profile' element = {<Profile state={state.profilePage} addPost={addPost}/>}/>
 				<Route path='/dialogs' element = {<Dialogs state={state.messagesPage}/>}/>
 				<Route path='/news' element = {<News />}/>
 				<Route path='/music' element = {<Music />}/>

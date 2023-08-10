@@ -10,15 +10,15 @@ import NavBar from './components/Navbar/NavBar';
 import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
-const App = ({state, addPost}) => {
+const App = ({state, addPost, updateNewPostChange, addMessage, updateNewMessageChange}) => {
 	return (
 		<div className='app-wrapper'>
 			<Header />
 			<NavBar state={state.sideBar}/>
 			<div className='app-wrapper-content'>
 			<Routes>
-				<Route path='/profile' element = {<Profile state={state.profilePage} addPost={addPost}/>}/>
-				<Route path='/dialogs' element = {<Dialogs state={state.messagesPage}/>}/>
+				<Route path='/profile' element = {<Profile updateNewPostChange={updateNewPostChange} profilePage={state.profilePage} addPost={addPost}/>}/>
+				<Route path='/dialogs' element = {<Dialogs updateNewMessageChange={updateNewMessageChange} messagesPage={state.messagesPage} addMessage={addMessage}/>}/>
 				<Route path='/news' element = {<News />}/>
 				<Route path='/music' element = {<Music />}/>
 				<Route path='/settings' element = {<Settings />}/>

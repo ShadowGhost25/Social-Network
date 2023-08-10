@@ -11,21 +11,24 @@ const MyPosts = (props) => {
 	let newPostElement = React.createRef();
 
 	let addPost = () => {
+		props.addPost();
+	}
+
+	let onPostChange = () => {
 		let text = newPostElement.current.value;
-		props.addPost(text);
-		newPostElement.current.value = " "
+		props.updateNewPostChange(text);
 	}
 
 	return (
 		<div>
 			<div className={style.main}>
-				My post
+				Мои посты
 			</div>
 			<div className={style.main}>
-				<textarea ref={newPostElement} cols="30" rows="5"></textarea>
+				<textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText[0].message} cols="30" rows="5" />
 			</div>
 			<div className={style.main}>
-				<button onClick={addPost}> Add post</button>
+				<button onClick={addPost}> Опубликовать пост </button>
 			</div>
 			<div className={style.main}>
 				{postsElement}
@@ -33,4 +36,4 @@ const MyPosts = (props) => {
 		</div>
 	)
 }
-export default MyPosts
+export default MyPosts 

@@ -11,7 +11,6 @@ const NavBar = ({ state, friendsData }) => {
 		{ id: 4, item: "News", link: "/news" },
 		{ id: 5, item: "Settings", link: "/settings" },
 	]
-	console.log(state)
 	let navBarElement = navBarData.map(n => <Paragraph key={n.id} item={n.item} link={n.link} />)
 
 	return (

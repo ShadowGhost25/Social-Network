@@ -1,12 +1,12 @@
-import { rerenderEntireThree } from "../render";
-
-  let state = {
+let rerenderEntireThree = () =>{
+  console.log("state changed")
+}
+let state = {
     profilePage:{
       postsData: [
-        { id: 1, message: "Hi how are you", likescount: 62 },
-        { id: 2, message: "It`s my first post", likescount: 51 },
+
       ],
-      
+      newPostText: [{ message: 'Добавь свой новый пост'}]
     },
     messagesPage:{
     dialogsData: [
@@ -20,25 +20,62 @@ import { rerenderEntireThree } from "../render";
       { id: 1, message: "Hi" },
       { id: 2, message: "How is your it-kamasutra" },
       { id: 3, message: "WHAT ?" },
-    ]
-    },
-    sideBar:{
+    ],
+    newMessageText:[{message: ''}]
+  },
+  sideBar:{
       friendsData:[
         {id: 1, friends: "Maks"},
         {id: 2, friends: "Sasha"},
         {id: 3, friends: "Denis"},
       ]
     }
-}
 
-export let addPost = (postMessage) => {
+  }
+  window.state = state;
+  
+export const addPost = () => {
   let newPost = {
-    id: 5,
-    message: postMessage,
-    likescount: 0,
+    id: generateRandomId(100),
+    message: state.profilePage.newPostText[0].message,
+    likescount: generateRandomLike(),
   }
   state.profilePage.postsData.push(newPost); 
+  state.profilePage.newPostText[0].message = "";
   rerenderEntireThree(state);
+}
+
+const generateRandomId = (max) =>{
+  const randomId = Math.floor(Math.random(max) * 100);
+  return randomId;
+}
+
+const generateRandomLike = (max) =>{
+  const randomLike = Math.floor(Math.random(max) * 100);
+  return randomLike;
+}
+
+export const updateNewPostChange = (newText) => {
+  state.profilePage.newPostText[0].message = newText; 
+  rerenderEntireThree(state);
+}
+export const addMessage = () => {
+  let newMessage = {
+    id: generateRandomId(100),
+    message: state.messagesPage.newMessageText[0].message,
+  }
+  state.messagesPage.messagesData.push(newMessage)
+  state.messagesPage.newMessageText[0].message = "";
+  rerenderEntireThree(state);
+}
+
+export const updateNewMessageChange = (newText) => {
+  state.messagesPage.newMessageText[0].message = newText
+  rerenderEntireThree(state);
+}
+
+export const subscribe = (observer) =>{
+  rerenderEntireThree = observer
 }
 
 export default state

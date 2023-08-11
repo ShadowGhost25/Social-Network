@@ -1,21 +1,22 @@
 import React from 'react';
 import reportWebVitals from './reportWebVitals';
-import State, { subscribe, addPost, updateNewPostChange, addMessage, updateNewMessageChange } from './redux/State';
+import store from './redux/State';
 import App from './App';
 
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from 'react-router-dom';
 
 const root = createRoot(document.getElementById('root'));
-let rerenderEntireThree = () => {
+let rerenderEntireThree = (state) => {
   root.render(
     <BrowserRouter>
-      <App state={State} addPost={addPost}  updateNewMessageChange={updateNewMessageChange} updateNewPostChange={updateNewPostChange} addMessage={addMessage}/>
+      <App state={state} dispatch={store.dispatch.bind(store)}  />
     </BrowserRouter>
   );
+  // console.log(state)
 }
-rerenderEntireThree();
-subscribe(rerenderEntireThree);
+rerenderEntireThree(store.getState());
+store.subscribe(rerenderEntireThree);
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

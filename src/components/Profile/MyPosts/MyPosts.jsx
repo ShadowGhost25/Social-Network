@@ -4,19 +4,20 @@ import Posts from './Posts/Posts';
 // eslint-disable-next-line no-unused-vars
 import style from './MyPosts.module.css';
 
-const MyPosts = (props) => {
+const MyPosts = ({ dispatch, profilePage }) => {
 
-	let postsElement = props.postsData.map(p => <Posts key={p.id} message={p.message} likeCount={p.likescount} />)
+	let postsElement = profilePage.postsData.map(p => <Posts key={p.id} message={p.message} likeCount={p.likescount} />)
 
 	let newPostElement = React.createRef();
 
 	let addPost = () => {
-		props.addPost();
+		dispatch({ type: "ADD-POST" });
 	}
 
 	let onPostChange = () => {
 		let text = newPostElement.current.value;
-		props.updateNewPostChange(text);
+		let action = { type: "UPDATE-NEW-POST-TEXT", newText: text }
+		dispatch(action);
 	}
 
 	return (
@@ -25,7 +26,7 @@ const MyPosts = (props) => {
 				Мои посты
 			</div>
 			<div className={style.main}>
-				<textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText[0].message} cols="30" rows="5" />
+				<textarea onChange={onPostChange} ref={newPostElement} value={profilePage.newPostText[0].message} cols="30" rows="5" />
 			</div>
 			<div className={style.main}>
 				<button onClick={addPost}> Опубликовать пост </button>

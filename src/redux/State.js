@@ -1,9 +1,11 @@
+const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT"
+const ADD_MESSAGE = "ADD-MESSAGE"
+const ADD_POST = "ADD-POST"
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
 let store = {
   _state: {
     profilePage:{
-      postsData: [
-        
-      ],
+      postsData: [],
       newPostText: [{ message: 'Добавь свой новый пост'}]
     },
     messagesPage:{
@@ -26,7 +28,15 @@ let store = {
         {id: 1, friends: "Maks"},
         {id: 2, friends: "Sasha"},
         {id: 3, friends: "Denis"},
-      ]
+      ],
+      navBarData:
+      [
+        { id: 1, item: "Profile", link: "/profile" },
+        { id: 2, item: "Messages", link: "/dialogs" },
+        { id: 3, item: "Music", link: "/music" },
+        { id: 4, item: "News", link: "/news" },
+        { id: 5, item: "Settings", link: "/settings" },
+      ],
     }
     
   },
@@ -63,14 +73,18 @@ let store = {
         id: Math.floor(Math.random(100) * 100),
         message: this._state.messagesPage.newMessageText[0].message,
       }
-      this._state.messagesPage.messagesData.push(newMessage)
       this._state.messagesPage.newMessageText[0].message = "";
+      this._state.messagesPage.messagesData.push(newMessage)
       this._callSubscriber(this._state);
     } else if (action.type === "UPDATE-NEW-MESSAGE-TEXT"){
-      this._state.messagesPage.newMessageText[0].message = action.newText
+      this._state.messagesPage.newMessageText[0].message = action.body
       this._callSubscriber(this._state);
     }
   }
 }
+export const addMessageActionCreator = () => ({type: ADD_MESSAGE})
+export const updateNewMessgeTextCreator = (body) => ({type: UPDATE_NEW_MESSAGE_TEXT, body: body})
+export const addPostActionCreator = () => ({type: ADD_POST})
+export const updateNewPostTextCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
 
 export default store

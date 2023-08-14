@@ -3,6 +3,7 @@ import React from 'react';
 import Posts from './Posts/Posts';
 // eslint-disable-next-line no-unused-vars
 import style from './MyPosts.module.css';
+import { addPostActionCreator, updateNewPostTextCreator } from '../../../redux/State';
 
 const MyPosts = ({ dispatch, profilePage }) => {
 
@@ -11,12 +12,12 @@ const MyPosts = ({ dispatch, profilePage }) => {
 	let newPostElement = React.createRef();
 
 	let addPost = () => {
-		dispatch({ type: "ADD-POST" });
+		dispatch(addPostActionCreator());
 	}
 
 	let onPostChange = () => {
 		let text = newPostElement.current.value;
-		let action = { type: "UPDATE-NEW-POST-TEXT", newText: text }
+		let action = updateNewPostTextCreator(text)
 		dispatch(action);
 	}
 

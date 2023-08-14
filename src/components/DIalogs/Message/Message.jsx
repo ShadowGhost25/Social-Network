@@ -1,19 +1,18 @@
 import React from 'react';
+import { addMessageActionCreator, updateNewMessgeTextCreator } from '../../../redux/State';
 import style from './Message.module.css';
 
 
 const Message = ({ dispatch, messagesPage }) => {
 
-  let newMessage = React.createRef();
 
-  let addMeassage = () => {
-    dispatch({ type: "ADD-MESSAGE" })
+  let onSendMessageClick = () => {
+    dispatch(addMessageActionCreator())
   }
 
-  let onMessageChange = () => {
-    let text = newMessage.current.value;
-    let action = { type: "UPDATE-NEW-MESSAGE-TEXT", newText: text }
-    dispatch(action)
+  let onMessageChange = (e) => {
+    let body = e.target.value;
+    dispatch(updateNewMessgeTextCreator(body))
   }
 
   let messageElement = messagesPage.messagesData.map(m => <div className={style.messages} key={m.id}> {m.message}</div >)
@@ -21,10 +20,10 @@ const Message = ({ dispatch, messagesPage }) => {
     <div>
       {messageElement}
       <div>
-        <textarea onChange={onMessageChange} ref={newMessage} value={messagesPage.newMessageText[0].message} cols="30" rows="5" />
+        <textarea placeholder='Enter your message' onChange={onMessageChange} value={messagesPage.newMessageText[0].message} cols="30" rows="5" />
       </div>
       <div>
-        <button onClick={addMeassage}>
+        <button onClick={onSendMessageClick}>
           Message
         </button>
       </div>

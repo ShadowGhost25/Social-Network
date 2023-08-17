@@ -3,10 +3,9 @@ import React from 'react';
 import Posts from './Posts/Posts';
 // eslint-disable-next-line no-unused-vars
 import style from './MyPosts.module.css';
-import { addPostActionCreator, updateNewPostTextCreator } from '../../../redux/State';
+import { addPostActionCreator, updateNewPostTextCreator } from '../../../redux/profileReducer';
 
 const MyPosts = ({ dispatch, profilePage }) => {
-
 	let postsElement = profilePage.postsData.map(p => <Posts key={p.id} message={p.message} likeCount={p.likescount} />)
 
 	let newPostElement = React.createRef();

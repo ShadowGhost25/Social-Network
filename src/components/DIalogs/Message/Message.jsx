@@ -1,10 +1,10 @@
 import React from 'react';
-import { addMessageActionCreator, updateNewMessgeTextCreator } from '../../../redux/State';
+import { addMessageActionCreator, updateNewMessgeTextCreator } from '../../../redux/dialogsReducer';
 import style from './Message.module.css';
 
 
 const Message = ({ dispatch, messagesPage }) => {
-
+  console.log(messagesPage)
 
   let onSendMessageClick = () => {
     dispatch(addMessageActionCreator())

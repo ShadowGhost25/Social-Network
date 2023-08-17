@@ -3,7 +3,7 @@ import MyPosts from './MyPosts/MyPosts';
 // import style from './Profile.module.css';
 
 const Profile = ({ dispatch, profilePage }) => {
-	console.log(profilePage)
+	// console.log(profilePage)
 	return (
 		<div>
 			<div>

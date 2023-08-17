@@ -4,6 +4,7 @@ import DialogsItem from './DialogsItem/DialogsItem';
 import Message from './Message/Message';
 
 const Dialogs = ({ messagesPage, dialogsData, dispatch }) => {
+  // console.log(messagesPage)
   return (
     <div className={style.dialogs}>
       <div className={style.dialogs_items}>

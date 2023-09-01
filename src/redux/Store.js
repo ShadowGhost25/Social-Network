@@ -1,5 +1,6 @@
 import dialogsReducer from "./dialogsReducer";
 import profileReducer from "./profileReducer";
+import sideBarReducer from "./sideBarReducer";
 let store = {
   _state: {
     profilePage:{
@@ -43,10 +44,6 @@ let store = {
     console.log("state changed")
   },
   
-  updateNewMessageChange(newText){
-
-  },
-  
   subscribe(observer){
     this._callSubscriber = observer
   },
@@ -56,6 +53,7 @@ let store = {
   dispatch(action) {
     this._state.profilePage = profileReducer(this._state.profilePage, action)
     this._state.messagesPage = dialogsReducer(this._state.messagesPage, action)
+    this._state.sideBar = sideBarReducer(this._state.sideBar, action)
     this._callSubscriber(this._state)
   }
 }

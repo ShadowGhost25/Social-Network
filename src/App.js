@@ -11,11 +11,11 @@ import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 const App = ({state, dispatch}) => {
-	// console.log(state)
+	console.log(state)
 	return (
 		<div className='app-wrapper'>
 			<Header />
-			<NavBar sideBar={state.sideBar}/>
+			<NavBar sideBar={state.sideBar} dispatch={dispatch}/>
 			<div className='app-wrapper-content'>
 			<Routes>
 				<Route path='/profile' element = {<Profile dispatch={dispatch} profilePage={state.profilePage}/>}/>

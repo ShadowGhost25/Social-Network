@@ -1,6 +1,6 @@
 import React from 'react';
 import reportWebVitals from './reportWebVitals';
-import store from './redux/State';
+import store from './redux/redux-store';
 import App from './App';
 
 import { createRoot } from "react-dom/client";
@@ -16,7 +16,10 @@ let rerenderEntireThree = (state) => {
   // console.log(state)
 }
 rerenderEntireThree(store.getState());
-store.subscribe(rerenderEntireThree);
+store.subscribe(() => {
+  let state = store.getState();
+  rerenderEntireThree(state)
+});
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

@@ -1,9 +1,9 @@
 import React from 'react';
 import style from './Dialogs.module.css';
 import DialogsItem from './DialogsItem/DialogsItem';
-import Message from './Message/Message';
+import MessageContainer from './Message/MessageContainer';
 
-const Dialogs = ({ messagesPage, dialogsData, dispatch }) => {
+const Dialogs = ({ messagesPage, dialogsData, dispatch, getState }) => {
   // console.log(messagesPage)
   return (
     <div className={style.dialogs}>
@@ -11,7 +11,7 @@ const Dialogs = ({ messagesPage, dialogsData, dispatch }) => {
         <DialogsItem dialogsData={messagesPage.dialogsData} />
       </div>
       <div className={style.messages}>
-        <Message dispatch={dispatch} messagesPage={messagesPage} />
+        <MessageContainer dispatch={dispatch} messagesPage={messagesPage} getState={getState} />
       </div>
     </div >
   )

@@ -1,18 +1,17 @@
 import React from 'react';
-import { addMessageActionCreator, updateNewMessgeTextCreator } from '../../../redux/dialogsReducer';
 import style from './Message.module.css';
 
 
-const Message = ({ dispatch, messagesPage }) => {
-  console.log(messagesPage)
+const Message = ({ dispatch, updateNewMessgeTextCreator, addMessageActionCreator, messagesPage }) => {
+  // console.log(messagesPage)
 
   let onSendMessageClick = () => {
-    dispatch(addMessageActionCreator())
+    addMessageActionCreator()
   }
 
   let onMessageChange = (e) => {
     let body = e.target.value;
-    dispatch(updateNewMessgeTextCreator(body))
+    updateNewMessgeTextCreator(body)
   }
 
   let messageElement = messagesPage.messagesData.map(m => <div className={style.messages} key={m.id}> {m.message}</div >)

@@ -10,7 +10,7 @@ const root = createRoot(document.getElementById('root'));
 let rerenderEntireThree = (state) => {
   root.render(
     <BrowserRouter>
-      <App state={state} dispatch={store.dispatch.bind(store)}  />
+      <App state={state} getState={store.getState}  dispatch={store.dispatch.bind(store)}  />
     </BrowserRouter>
   );
   // console.log(state)

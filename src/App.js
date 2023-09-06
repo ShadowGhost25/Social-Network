@@ -1,4 +1,5 @@
 import React from 'react';
+
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
  
@@ -10,16 +11,18 @@ import NavBar from './components/Navbar/NavBar';
 import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
-const App = ({state, dispatch, getState}) => {
-	// console.log(state)
+const App = ({ dispatch, getState}) => {
+	// console.log(getState)
+
+	
 	return (
 		<div className='app-wrapper'>
 			<Header />
-			<NavBar sideBar={state.sideBar}/>
+			<NavBar/>
 			<div className='app-wrapper-content'>
 			<Routes>
-				<Route path='/profile' element = {<Profile dispatch={dispatch} profilePage={state.profilePage} getState={getState}/>}/>
-				<Route path='/dialogs' element = {<Dialogs dispatch={dispatch} messagesPage={state.messagesPage} getState={getState}/>}/>
+				<Route path='/profile' element = {<Profile dispatch={dispatch} getState={getState}/>}/>
+				<Route path='/dialogs' element = {<Dialogs dispatch={dispatch} getState={getState}/>}/>
 				<Route path='/news' element = {<News />}/>
 				<Route path='/music' element = {<Music />}/>
 				<Route path='/settings' element = {<Settings />}/>

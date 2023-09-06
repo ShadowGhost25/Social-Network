@@ -5,15 +5,18 @@ import App from './App';
 
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 const root = createRoot(document.getElementById('root'));
 let rerenderEntireThree = (state) => {
   root.render(
+    <Provider state={state} store={store}>
     <BrowserRouter>
       <App state={state} getState={store.getState}  dispatch={store.dispatch.bind(store)}  />
     </BrowserRouter>
+    </Provider>
   );
-  // console.log(state)
+  // console.log(store)
 }
 rerenderEntireThree(store.getState());
 store.subscribe(() => {

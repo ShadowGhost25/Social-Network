@@ -2,8 +2,8 @@ import React from 'react';
 import { addPostActionCreator, updateNewPostTextCreator } from '../../../redux/profileReducer';
 import MyPosts from "./MyPosts";
 
-const MyPostsContainer = ({ dispatch, profilePage, getState }) => {
-  let state = getState().profilePage
+const MyPostsContainer = ({ getState, dispatch }) => {
+  let statee = getState().profilePage
 
   let addPost = () => {
     dispatch(addPostActionCreator());
@@ -15,7 +15,7 @@ const MyPostsContainer = ({ dispatch, profilePage, getState }) => {
   }
 
   return (
-    <MyPosts updateNewPostTextCreator={onPostChange} addPost={addPost} profilePage={state} />
+    <MyPosts updateNewPostTextCreator={onPostChange} addPost={addPost} profilePage={statee} />
   )
 }
 export default MyPostsContainer 

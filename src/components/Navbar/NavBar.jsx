@@ -1,16 +1,17 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import style from './NavBar.module.css';
 import Paragraph from './Paragraph/Paragraph';
 import SideBar from './SideBar/SideBar';
 
-const NavBar = ({ sideBar }) => {
-	let navBarElement = sideBar.navBarData.map(n => <Paragraph key={n.id} item={n.item} link={n.link} />)
-
+const NavBar = () => {
+	const { friendsData, navBarData } = useSelector(state => state.sideBar)
+	// console.log('state =<>', friendsData, navBarData);
 	return (
 		<nav className={style.sidebar}>
-			{navBarElement}
+			{navBarData.map(n => <Paragraph key={n.id} item={n.item} link={n.link} />)}
 			<h2>Friends</h2>
-			<SideBar friendsData={sideBar.friendsData} />
+			<SideBar friendsData={friendsData} />
 		</nav >
 	)
 }

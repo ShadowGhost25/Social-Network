@@ -1,9 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { addMessageActionCreator, updateNewMessgeTextCreator } from '../../../redux/dialogsReducer';
 import Message from "./Message"
 
-const MessageContainer = ({ dispatch, messagesPage, getState }) => {
-
+const MessageContainer = ({ messagesPage, getState }) => {
+  const dispatch = useDispatch()
   let state = getState().messagesPage
 
   let onSendMessageClick = () => {

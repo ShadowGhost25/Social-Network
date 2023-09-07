@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -11,9 +12,9 @@ import NavBar from './components/Navbar/NavBar';
 import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
-const App = ({ dispatch, getState}) => {
+const App = ({getState}) => {
 	// console.log(getState)
-
+const dispatch = useDispatch()
 	
 	return (
 		<div className='app-wrapper'>

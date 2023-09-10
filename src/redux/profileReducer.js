@@ -3,7 +3,7 @@ const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
 
 let initialStateProfile = {
   postsData: [],
-  newPostText: [{ message: 'Добавь свой новый пост'}]
+  newPostText: ""
 }
 
 const profileReducer = (state = initialStateProfile, action) => {
@@ -12,20 +12,21 @@ const profileReducer = (state = initialStateProfile, action) => {
       
       let newPost = {
         id: Math.floor(Math.random(100) * 9999999),
-        message: state.newPostText[0].message,
+        message: state.newPostText,
         likescount: Math.floor(Math.random(100) * 100),
       }
       
-      let stateCopy = {...state}
-      stateCopy.postsData = [...state.postsData]; 
-      stateCopy.postsData.push(newPost)
-      console.log(stateCopy);
-      return stateCopy
+      return {
+        ...state,
+        newPostText: "",
+        postsData: [...state.postsData, newPost],
+      }
     }
     case UPDATE_NEW_POST_TEXT:
-      let stateCopy = {...state}
-      stateCopy.newPostText[0].message = action.newText; 
-      return stateCopy
+      return{
+        ...state,
+        newPostText: action.newText,
+      }
       default:
         return state
   }

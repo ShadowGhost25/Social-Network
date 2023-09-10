@@ -19,7 +19,7 @@ const Message = ({ dispatch, updateNewMessgeTextCreator, addMessageActionCreator
     <div>
       {messageElement}
       <div>
-        <textarea placeholder='Enter your message' onChange={onMessageChange} value={messagesPage.newMessageText[0].message} cols="30" rows="5" />
+        <textarea placeholder='Enter your message' onChange={onMessageChange} value={messagesPage.newMessageText} cols="30" rows="5" />
       </div>
       <div>
         <button onClick={onSendMessageClick}>

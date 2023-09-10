@@ -14,22 +14,27 @@ let initialStateMessage ={
     { id: 2, message: "How is your it-kamasutra" },
     { id: 3, message: "WHAT ?" },
   ],
-  newMessageText:[{message: ''}]
+  newMessageText:""
 }
 
 export const dialogsReducer = (state = initialStateMessage, action) => {
+  const randomId = () => Math.floor(Math.random(100) * 9999999)
     switch (action.type) {
-      case ADD_MESSAGE:
-        let newMessage = {
-          id: Math.floor(Math.random(100) * 9999999),
-          message: state.newMessageText[0].message,
-        }
-        state.newMessageText[0].message = "";
-        state.messagesData.push(newMessage)
-        return state
+      case ADD_MESSAGE: 
+      const newMessage = {
+        id: randomId(),
+        message: state.newMessageText,
+      }
+        return {
+          ...state,
+          newMessageText: "",
+          messagesData: [...state.messagesData, newMessage]
+        }    
         case UPDATE_NEW_MESSAGE_TEXT:
-        state.newMessageText[0].message = action.body
-        return state
+        return {
+          ...state,
+        newMessageText: action.body
+        }
       default:
         return state
     } 

@@ -12,8 +12,7 @@ const MyPostsContainer = ({ getState }) => {
   }
 
   let onPostChange = (text) => {
-    let action = updateNewPostTextCreator(text)
-    dispatch(action);
+    dispatch(updateNewPostTextCreator(text));
   }
 
   return (

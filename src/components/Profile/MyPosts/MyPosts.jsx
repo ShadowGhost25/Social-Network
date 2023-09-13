@@ -7,10 +7,6 @@ const MyPosts = ({ stateProfilePage, updateNewPostTextCreator, addPost }) => {
 
 	let newPostElement = React.createRef();
 
-	let onAddPost = () => {
-		addPost()
-	}
-
 	let onPostChange = () => {
 		let text = newPostElement.current.value;
 		updateNewPostTextCreator(text)
@@ -25,7 +21,7 @@ const MyPosts = ({ stateProfilePage, updateNewPostTextCreator, addPost }) => {
 				<textarea placeholder='Добавь свой новый пост' onChange={onPostChange} ref={newPostElement} value={stateProfilePage.newPostText} cols="30" rows="5" />
 			</div>
 			<div className={style.main}>
-				<button onClick={onAddPost}> Опубликовать пост </button>
+				<button onClick={() => { addPost() }}> Опубликовать пост </button>
 			</div>
 			<div className={style.main}>
 				{postsElement}

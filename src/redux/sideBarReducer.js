@@ -12,6 +12,7 @@ let initialStateSideBar = {
     { id: 3, item: "Music", link: "/music" },
     { id: 4, item: "News", link: "/news" },
     { id: 5, item: "Settings", link: "/settings" },
+    { id: 6, item: "Users", link: "/users"},
   ],
 } 
 export const sideBarReducer = (state = initialStateSideBar, action ) => {

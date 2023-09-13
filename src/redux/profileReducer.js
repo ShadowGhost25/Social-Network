@@ -9,6 +9,7 @@ let initialStateProfile = {
 const profileReducer = (state = initialStateProfile, action) => {
   switch (action.type) {
     case ADD_POST:{
+      debugger
       
       let newPost = {
         id: Math.floor(Math.random(100) * 9999999),
@@ -25,7 +26,7 @@ const profileReducer = (state = initialStateProfile, action) => {
     case UPDATE_NEW_POST_TEXT:
       return{
         ...state,
-        newPostText: action.newText,
+        newPostText: action.text,
       }
       default:
         return state
@@ -33,5 +34,5 @@ const profileReducer = (state = initialStateProfile, action) => {
 
 }
 export const addPostActionCreator = () => ({type: ADD_POST})
-export const updateNewPostTextCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+export const updateNewPostTextCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, text})
 export default profileReducer

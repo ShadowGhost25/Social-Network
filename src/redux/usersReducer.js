@@ -4,10 +4,10 @@ const SET_USERS = "SET_USERS"
 
 let initialstate ={
   users: [
-    { id: 1, photo: "https://i.ytimg.com/vi/uy-xS677tHA/mqdefault.jpg", followed: false, status: "Hello world", name: "Ilya", location: { city: "Penza", country: "Russia"} },
-    { id: 2, photo: "https://i.ytimg.com/vi/uy-xS677tHA/mqdefault.jpg", followed: true, status: "Hello world", name: "Kirill", location: { city: "Moskva", country: "Russia"} },
-    { id: 3, photo: "https://i.ytimg.com/vi/uy-xS677tHA/mqdefault.jpg", followed: true, status: "Hello world", name: "Pasha", location: { city: "Kiev", country: "Ucrain"} },
-    { id: 4, photo: "https://i.ytimg.com/vi/uy-xS677tHA/mqdefault.jpg", followed: false, status: "Hello world", name: "Sasha", location: { city: "Minsk", country: "Belarus"} },
+    // { id: 1, photo: "https://i.ytimg.com/vi/uy-xS677tHA/mqdefault.jpg", followed: false, status: "Hello world", name: "Ilya", location: { city: "Penza", country: "Russia"} },
+    // { id: 2, photo: "https://i.ytimg.com/vi/uy-xS677tHA/mqdefault.jpg", followed: true, status: "Hello world", name: "Kirill", location: { city: "Moskva", country: "Russia"} },
+    // { id: 3, photo: "https://i.ytimg.com/vi/uy-xS677tHA/mqdefault.jpg", followed: true, status: "Hello world", name: "Pasha", location: { city: "Kiev", country: "Ucrain"} },
+    // { id: 4, photo: "https://i.ytimg.com/vi/uy-xS677tHA/mqdefault.jpg", followed: false, status: "Hello world", name: "Sasha", location: { city: "Minsk", country: "Belarus"} },
     
   ]
 }

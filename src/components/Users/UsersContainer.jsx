@@ -1,15 +1,26 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { followAC, setUsersAC, unfollowAC } from "../../redux/usersReducer";
-import Users from "./Users";
+import { followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unfollowAC } from "../../redux/usersReducer";
+import Users from "./UsersClass";
 
 let UsersContainer = () => {
   const dispatch = useDispatch()
-  const stateUsersPage = useSelector((state) => state)
+  const usersPage = useSelector((state) => state.usersPage)
+  const pageSize = useSelector((state) => state.usersPage.pageSize)
+  const totalUsersCount = useSelector((state) => state.usersPage.totalUsersCount)
+  const currentPage = useSelector((state) => state.usersPage.currentPage)
+
 
   let follow = (userId) => {
     dispatch(followAC(userId));
+  }
+
+  let setCurrentPage = (pageNumber) => {
+    dispatch(setCurrentPageAC(pageNumber))
+  }
+  let setTotalUsersCount = (totalCount) => {
+    dispatch(setTotalUsersCountAC(totalCount))
   }
 
   let unfollow = (userId) => {
@@ -19,7 +30,7 @@ let UsersContainer = () => {
     dispatch(setUsersAC(users));
   }
   return (
-    <Users follow={follow} unfollow={unfollow} setUsers={setUsers} stateUsersPage={stateUsersPage} />
+    <Users follow={follow} unfollow={unfollow} setUsers={setUsers} setCurrentPage={setCurrentPage} setTotalUsersCount={setTotalUsersCount} usersPage={usersPage} pageSize={pageSize} totalUsersCount={totalUsersCount} currentPage={currentPage} />
   )
 }
 

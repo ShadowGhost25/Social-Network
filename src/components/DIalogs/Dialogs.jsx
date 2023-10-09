@@ -6,7 +6,7 @@ import MessageContainer from './Message/MessageContainer';
 
 const Dialogs = ({ dispatch, getState }) => {
   const state = useSelector(state => state.messagesPage)
-  console.log('state =<>', state);
+  // console.log('state =<>', state);
   return (
     <div className={style.dialogs}>
       <div className={style.dialogs_items}>

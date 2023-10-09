@@ -1,8 +1,10 @@
+import axios from "axios";
 import React from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unfollowAC } from "../../redux/usersReducer";
-import Users from "./UsersClass";
+import Users from "./Users";
 
 let UsersContainer = () => {
   const dispatch = useDispatch()
@@ -11,6 +13,19 @@ let UsersContainer = () => {
   const totalUsersCount = useSelector((state) => state.usersPage.totalUsersCount)
   const currentPage = useSelector((state) => state.usersPage.currentPage)
 
+  const getUsers = () => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`).then(response => {
+      setUsers(response.data.items)
+      setTotalUsersCount(response.data.totalCount)
+    })
+  }
+  const nextPage = (pageNumber) => {
+    setCurrentPage(pageNumber)
+  }
+
+  useEffect(() => {
+    getUsers()
+  }, [])
 
   let follow = (userId) => {
     dispatch(followAC(userId));
@@ -30,7 +45,15 @@ let UsersContainer = () => {
     dispatch(setUsersAC(users));
   }
   return (
-    <Users follow={follow} unfollow={unfollow} setUsers={setUsers} setCurrentPage={setCurrentPage} setTotalUsersCount={setTotalUsersCount} usersPage={usersPage} pageSize={pageSize} totalUsersCount={totalUsersCount} currentPage={currentPage} />
+    <Users
+      totalUsersCount={totalUsersCount}
+      pageSize={pageSize}
+      currentPage={currentPage}
+      nextPage={nextPage}
+      usersPage={usersPage}
+      follow={follow}
+      unfollow={unfollow}
+    />
   )
 }
 

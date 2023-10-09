@@ -1,22 +1,24 @@
 import React from "react";
-import axios from "axios";
 import png from "./img/users.png"
-import s from "./Users.module.css";
-
-let Users = ({ follow, unfollow, setUsers, stateUsersPage }) => {
-  let getUsers = () => {
-    if (stateUsersPage.usersPage.users.length === 0) {
-      axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-        setUsers(response.data.items)
-      })
-    }
+import s from "./Users.module.css"
+let Users = ({ follow, unfollow, totalUsersCount, pageSize, currentPage, nextPage, usersPage }) => {
+  let pagesCount = Math.ceil(totalUsersCount / pageSize);
+  let pages = [];
+  // console.log(onClickPage)
+  for (let i = 1; i <= pagesCount; i++) {
+    pages.push(i)
   }
-
   return (
     <div>
-      <button onClick={getUsers} > Добавить пользователей  </button>
+      <div>
+        {pages.map((p, index) => {
+          return <span key={index} className={currentPage === p && s.selectedPage} onClick={(e) => {
+            nextPage(p)
+          }}>{p}</span>
+        })}
+      </div>
       {
-        stateUsersPage.usersPage.users.map(u => <div key={u.id}>
+        usersPage.users.map(u => <div key={u.id}>
           <span>
             <div>
               <img src={u.photos.small === null ? png : u.photos.small} alt={"no foto"} className={s.userPhoto} />
@@ -43,6 +45,7 @@ let Users = ({ follow, unfollow, setUsers, stateUsersPage }) => {
     </div>
 
   )
+
 }
-// debugger
+
 export default Users

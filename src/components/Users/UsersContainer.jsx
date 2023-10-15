@@ -3,8 +3,9 @@ import React from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unfollowAC } from "../../redux/usersReducer";
+import { followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleIsFetchingAC, unfollowAC } from "../../redux/usersReducer";
 import Users from "./Users";
+import Preloader from "../Preloader/Preloader";
 
 let UsersContainer = () => {
   const dispatch = useDispatch()
@@ -12,9 +13,13 @@ let UsersContainer = () => {
   const pageSize = useSelector((state) => state.usersPage.pageSize)
   const totalUsersCount = useSelector((state) => state.usersPage.totalUsersCount)
   const currentPage = useSelector((state) => state.usersPage.currentPage)
-
+  const isFetching = useSelector((state) => state.usersPage.isFetching)
+  // console.log(useSelector((state) => state.usersPage))
   const getUsers = () => {
+    debugger
+    toggleIsFetching(true)
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`).then(response => {
+      toggleIsFetching(false)
       setUsers(response.data.items)
       setTotalUsersCount(response.data.totalCount)
     })
@@ -25,10 +30,14 @@ let UsersContainer = () => {
 
   useEffect(() => {
     getUsers()
-  }, [])
+
+  }, [currentPage])
 
   let follow = (userId) => {
     dispatch(followAC(userId));
+  }
+  let unfollow = (userId) => {
+    dispatch(unfollowAC(userId));
   }
 
   let setCurrentPage = (pageNumber) => {
@@ -37,23 +46,26 @@ let UsersContainer = () => {
   let setTotalUsersCount = (totalCount) => {
     dispatch(setTotalUsersCountAC(totalCount))
   }
-
-  let unfollow = (userId) => {
-    dispatch(unfollowAC(userId));
-  }
   let setUsers = (users) => {
     dispatch(setUsersAC(users));
   }
+
+  let toggleIsFetching = (isFetching) => {
+    dispatch(toggleIsFetchingAC(isFetching))
+  }
   return (
-    <Users
-      totalUsersCount={totalUsersCount}
-      pageSize={pageSize}
-      currentPage={currentPage}
-      nextPage={nextPage}
-      usersPage={usersPage}
-      follow={follow}
-      unfollow={unfollow}
-    />
+    <>
+      {isFetching ? <Preloader /> : null}
+      <Users
+        totalUsersCount={totalUsersCount}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        nextPage={nextPage}
+        usersPage={usersPage}
+        follow={follow}
+        unfollow={unfollow}
+      />
+    </>
   )
 }
 

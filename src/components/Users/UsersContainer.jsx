@@ -14,9 +14,7 @@ let UsersContainer = () => {
   const totalUsersCount = useSelector((state) => state.usersPage.totalUsersCount)
   const currentPage = useSelector((state) => state.usersPage.currentPage)
   const isFetching = useSelector((state) => state.usersPage.isFetching)
-  // console.log(useSelector((state) => state.usersPage))
   const getUsers = () => {
-    debugger
     toggleIsFetching(true)
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`).then(response => {
       toggleIsFetching(false)

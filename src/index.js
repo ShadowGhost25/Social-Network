@@ -11,9 +11,9 @@ const root = createRoot(document.getElementById('root'));
 let rerenderEntireThree = (state) => {
   root.render(
     <Provider state={state} store={store}>
-    <BrowserRouter>
-      <App state={state} getState={store.getState}  dispatch={store.dispatch.bind(store)}  />
-    </BrowserRouter>
+      <BrowserRouter>
+        <App state={state} getState={store.getState} dispatch={store.dispatch.bind(store)} />
+      </BrowserRouter>
     </Provider>
   );
   // console.log(store)
@@ -23,6 +23,8 @@ store.subscribe(() => {
   let state = store.getState();
   rerenderEntireThree(state)
 });
+
+window.store = store
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

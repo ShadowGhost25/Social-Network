@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import png from "./img/users.png"
 import s from "./Users.module.css"
 let Users = ({ follow, unfollow, totalUsersCount, pageSize, currentPage, nextPage, usersPage }) => {
@@ -21,7 +22,9 @@ let Users = ({ follow, unfollow, totalUsersCount, pageSize, currentPage, nextPag
         usersPage.users.map(u => <div key={u.id}>
           <span>
             <div>
-              <img src={u.photos.small === null ? png : u.photos.small} alt={"no foto"} className={s.userPhoto} />
+              <NavLink to={'/profile/'}>
+                <img src={u.photos.small === null ? png : u.photos.small} alt={"no foto"} className={s.userPhoto} />
+              </NavLink>
             </div>
             <div>
               {u.followed ?

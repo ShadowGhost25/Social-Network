@@ -1,11 +1,15 @@
 .friends_block{
   margin-top: 20px;
+  width: 210px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   color: white;
 }
 .friends{
+  width: 50px;
   margin-right: 20px;
+  text-align: center;
 }
 .avatar{
   width: 50px;

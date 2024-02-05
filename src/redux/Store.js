@@ -3,11 +3,11 @@ import profileReducer from "./profileReducer";
 import sideBarReducer from "./sideBarReducer";
 let store = {
   _state: {
-    profilePage:{
+    profilePage: {
       postsData: [],
-      newPostText: [{ message: 'Добавь свой новый пост'}]
+      newPostText: [{ message: 'Добавь свой новый пост' }]
     },
-    messagesPage:{
+    messagesPage: {
       dialogsData: [
         { id: 1, link: "/dialogs/1", name: "Ilya" },
         { id: 2, link: "/dialogs/2", name: "Sasha" },
@@ -20,34 +20,34 @@ let store = {
         { id: 2, message: "How is your it-kamasutra" },
         { id: 3, message: "WHAT ?" },
       ],
-      newMessageText:[{message: ''}]
+      newMessageText: [{ message: '' }]
     },
-    sideBar:{
-      friendsData:[
-        {id: 1, friends: "Maks"},
-        {id: 2, friends: "Sasha"},
-        {id: 3, friends: "Denis"},
+    sideBar: {
+      friendsData: [
+        { id: 1, friends: "Maks" },
+        { id: 2, friends: "Sasha" },
+        { id: 3, friends: "Denis" },
       ],
       navBarData:
-      [
-        { id: 1, item: "Profile", link: "/profile" },
-        { id: 2, item: "Messages", link: "/dialogs" },
-        { id: 3, item: "Music", link: "/music" },
-        { id: 4, item: "News", link: "/news" },
-        { id: 5, item: "Settings", link: "/settings" },
-      ],
+        [
+          { id: 1, item: "Profile", link: "/profile" },
+          { id: 2, item: "Messages", link: "/dialogs" },
+          { id: 3, item: "Music", link: "/music" },
+          { id: 4, item: "News", link: "/news" },
+          { id: 5, item: "Settings", link: "/settings" },
+        ],
     }
-    
+
   },
 
   _callSubscriber() {
     console.log("state changed")
   },
-  
-  subscribe(observer){
+
+  subscribe(observer) {
     this._callSubscriber = observer
   },
-  getState(){
+  getState() {
     return this._state;
   },
   dispatch(action) {
@@ -57,6 +57,4 @@ let store = {
     this._callSubscriber(this._state)
   }
 }
-
-
 export default store

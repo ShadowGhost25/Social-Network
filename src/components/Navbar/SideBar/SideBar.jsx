@@ -1,12 +1,14 @@
 import React from 'react';
 import style from './SideBar.module.css';
-import img from './img/david.jpg'
+import { useSelector } from "react-redux";
+import Friends from './Friends';
 
 const SideBar = ({ friendsData }) => {
-  let friendsElement = friendsData.map(f => <div className={style.friends} key={f.id}><img className={style.avatar} src={img} alt="" />{f.friends}</div>)
+  const usersPage = useSelector((state) => state.usersPage)
+  // console.log(usersPage.users[0].followed)
   return (
     <div className={style.friends_block}>
-      {friendsElement}
+      {usersPage.users[0].followed === true ? <Friends /> : <div> no friends</div>}
     </div>
   )
 }
